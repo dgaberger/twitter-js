@@ -1,0 +1,11 @@
+{
+  "name": "twitter",
+  "version": "1.0.0",
+  "description": "twittin all over the world",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
