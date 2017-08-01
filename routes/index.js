@@ -23,10 +23,10 @@ router.use(express.static('public'));
 
 //form submission route
 router.post('/tweets', urlencodedParser, function(req, res) {
-	console.log(req.body)
+	//console.log(req.body)
   var name = req.body.name;
   var text = req.body.text;
-  console.log(name)
+  //console.log(name)
   tweetBank.add(name, text);
   res.redirect('/');
 });
@@ -48,7 +48,7 @@ router.get('/tweets/:uniqID', function(req, res) {
 
 router.get('/', function (req, res) { //
   let tweets = tweetBank.list();
-  console.log(tweets);
+  //console.log(tweets);
   res.render( 'index', { tweets: tweets, showForm: true});
 });
 
