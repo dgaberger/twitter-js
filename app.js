@@ -16,26 +16,29 @@ app.get("/news", function(req, res){
 })
 
 app.get("/", function(req, res){
-	res.send("Welcome Buddy")
+	res.render("index", locals)
 })
 
 
 
-//nunjucks
+//		nunjucks		//
 var locals = {
     title: 'An Example',
     people: [
         { name: 'Gandalf'},
         { name: 'Frodo' },
-        { name: 'Hermione'}
+        { name: 'Sam'}
     ]
 };
 
-//nunjucks.configure('views', {noCache: true});
-// var renderHTML = nunjucks.render("index.html", locals, function(err, output){
+
+
+// below just a test?	//
+// nunjucks.render("index.html", locals, function(err, output){
 // 	console.log(output)
 // })
-// app.set('view engine', 'html'); // have res.render work with html files
-// app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
-// nunjucks.configure('views'); // point nunjucks to the proper directory for templates
+
+app.set('view engine', 'html'); // have res.render work with html files
+app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
+nunjucks.configure('views', {noCache: true});
 
