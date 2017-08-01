@@ -4,9 +4,13 @@ const _ = require('lodash');
 //keep data private, no export
 const data = [];
 
-
+let ID = 0 // i forget why this is bad
 function add (name, content) {
-  data.push({ name: name, content: content });
+  function uniqIDmaker(){
+    ID ++
+    return ID.toString()
+  }
+  data.push({ name: name, content: content, uniqID: uniqIDmaker()});
 }
 
 function list () {
@@ -43,6 +47,8 @@ for (let i = 0; i < 10; i++) {
 }
 
 module.exports.add('Twitter', 'testTweet');
+module.exports.add('Twitter', 'testTweet2');
+module.exports.add('Twitter', 'testTweet3');
 
 
 
