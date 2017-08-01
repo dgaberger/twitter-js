@@ -82,7 +82,7 @@
 
   <script src="/socket.io/socket.io.js"></script>
   <script>
-    const tweetBank = require('../tweetBank');
+
     // Load the socket.io library above, then connect to the server.
     // Because the socket.io server is being run on the same server as your 
     // Express instance, you can connect() without any arguments.
@@ -94,9 +94,28 @@
     socket.on('newTweet', function (tweet) { 
       console.log(tweet);
       alert('Refreshing... check the console...');
-      tweetBank.add(tweet)
       // some logic to add the new tweet to the DOM…
+      $("#tweetBlock").append(
+
+        `<li><a href="/users/{{tweet.name}}">{{tweet.name}}</a>: {{tweet.content}} <a href="/tweets/{{tweet.uniqID}}">(link)</a></li>`
+
+        )
+
+
     }); 
   </script>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
