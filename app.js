@@ -3,17 +3,19 @@ const app = express();
 const volleyball = require("volleyball")
 const nunjucks = require("nunjucks")
 const routes = require('./routes');
+const socketio = require("socket.io");
 
 
 
 //logger
 app.use(volleyball)
 
-app.listen(3001, function(req, res){
+const server = app.listen(3001, function(req, res){
 	console.log("listening")
 })
+const io = socketio.listen(server)
 
-app.use('/', routes);
+app.use('/', routes(io));
 
 // app.get("/news", function(req, res){
 // 	res.send("This is the news")
@@ -21,25 +23,6 @@ app.use('/', routes);
 
 // app.get("/", function(req, res){
 // 	res.render("index", locals)
-// })
-
-
-
-//		nunjucks		//
-var locals = {
-    title: 'An Example',
-    people: [
-        { name: 'Gandalf'},
-        { name: 'Frodo' },
-        { name: 'Sam'}
-    ]
-};
-
-
-
-// below just a test?	//
-// nunjucks.render("index.html", locals, function(err, output){
-// 	console.log(output)
 // })
 
 

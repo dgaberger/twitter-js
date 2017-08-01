@@ -28,15 +28,18 @@ router.post('/tweets', urlencodedParser, function(req, res) {
   var text = req.body.text;
   //console.log(name)
   tweetBank.add(name, text);
+
+  // io.sockets.emit('newTweet', { name, text }); 
+
   res.redirect('/');
 });
 
 //basic routing
 router.get('/users/:name', function(req, res) {
-  var name = req.params.name;
-  var tweets = tweetBank.find( {name: name} );
-
-  res.render( 'index', { tweets: tweets } );
+  var n = req.params.name;
+  var tweets = tweetBank.find( {name: n} );
+  //console.log('my tweets', tweets)
+  res.render( 'index', { tweets: tweets, name: n, showForm:true} );
 });
 
 router.get('/tweets/:uniqID', function(req, res) {
@@ -53,9 +56,6 @@ router.get('/', function (req, res) { //
 });
 
 
-
-
-
-
-
-module.exports = router;
+module.exports = function(io){
+  return router
+}
