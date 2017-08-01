@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const volleyball = require("volleyball")
 const nunjucks = require("nunjucks")
+const routes = require('./routes');
+
+
 
 //logger
 app.use(volleyball)
@@ -10,14 +13,15 @@ app.listen(3001, function(req, res){
 	console.log("listening")
 })
 
+app.use('/', routes);
 
-app.get("/news", function(req, res){
-	res.send("This is the news")
-})
+// app.get("/news", function(req, res){
+// 	res.send("This is the news")
+// })
 
-app.get("/", function(req, res){
-	res.render("index", locals)
-})
+// app.get("/", function(req, res){
+// 	res.render("index", locals)
+// })
 
 
 
